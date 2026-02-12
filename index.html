@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Lumina | Zero Bloat UI</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/fonts.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Plus Jakarta Sans"', 'sans-serif'] },
+                    colors: {
+                        brand: { 500: '#6366f1', 600: '#4f46e5' },
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                        'shine': 'shine 3s infinite linear',
+                        'shake': 'shake 0.4s cubic-bezier(.36,.07,.19,.97) both',
+                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        },
+                        shine: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' },
+                        },
+                        shake: {
+                            '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+                            '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+                            '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+                            '40%, 60%': { transform: 'translate3d(4px, 0, 0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(15px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-gray-50 h-[100dvh] w-screen flex items-center justify-center relative text-gray-800">
+
+    <div class="fixed inset-0 w-full h-full overflow-hidden pointer-events-none -z-10 bg-gray-50">
+        <div class="absolute top-0 left-0 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
+        <div class="absolute top-0 right-0 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-32 left-20 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000"></div>
+    </div>
+
+    <div class="relative w-[92%] max-w-[400px] glass-panel rounded-3xl overflow-hidden z-10 flex flex-col shadow-2xl animate-fade-in-up">
+        
+        <div class="absolute top-0 left-0 w-full pt-4 pb-2 text-center z-20 pointer-events-none">
+            <div class="inline-flex items-center space-x-1.5 opacity-60">
+                <i class="bi bi-layers-fill text-brand-600 text-xs"></i>
+                <span class="text-[9px] font-bold tracking-[0.2em] uppercase text-gray-600">Zero Bloat UI</span>
+            </div>
+        </div>
+
+        <div id="sliderTrack" class="slider-track flex w-[200%]">
+            
+            <div class="w-1/2 p-6 pt-10 flex flex-col justify-center relative">
+                <div class="text-center mb-4 animate-fade-in-up delay-100">
+                    <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Lumina.</h1>
+                    <p class="text-xs text-gray-600 mt-0.5">Welcome back to your dashboard.</p>
+                </div>
+
+                <form id="loginForm" novalidate class="space-y-3 animate-fade-in-up delay-200">
+                    <div class="relative group">
+                        <input type="email" id="loginEmail" placeholder=" " required 
+                            class="input-animate peer w-full h-12 bg-white/40 border border-gray-300/80 rounded-xl px-3 pl-10 outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-sm text-gray-700">
+                        <label class="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 text-xs transition-all pointer-events-none rounded cursor-text origin-left">Email Address</label>
+                        <i class="bi bi-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 peer-focus:text-brand-500 transition-colors text-sm"></i>
+                        <i class="bi bi-check-circle-fill absolute right-3.5 top-1/2 -translate-y-1/2 text-green-500 opacity-0 transition-opacity validation-icon text-xs"></i>
+                    </div>
+
+                    <div class="relative group">
+                        <input type="password" id="loginPass" placeholder=" " required 
+                            class="input-animate peer w-full h-12 bg-white/40 border border-gray-300/80 rounded-xl px-3 pl-10 pr-16 outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-sm text-gray-700">
+                        <label class="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 text-xs transition-all pointer-events-none rounded cursor-text origin-left">Password</label>
+                        <i class="bi bi-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 peer-focus:text-brand-500 transition-colors text-sm"></i>
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-2">
+                            <i class="bi bi-check-circle-fill text-green-500 opacity-0 transition-opacity validation-icon text-xs"></i>
+                            <i class="bi bi-eye-slash text-gray-500 cursor-pointer hover:text-brand-600 hover:scale-110 transition-all z-20" onclick="togglePassword('loginPass', this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center text-[11px] text-gray-600 font-medium">
+                        <label class="flex items-center space-x-2 cursor-pointer group">
+                            <input type="checkbox" class="rounded border-gray-400 text-brand-600 focus:ring-brand-200 cursor-pointer transition-transform group-active:scale-90">
+                            <span class="group-hover:text-brand-600 transition-colors">Remember me</span>
+                        </label>
+                        <a href="forgot-password.html" class="hover:text-brand-600 hover:translate-x-1 transition-all">Forgot Password?</a>
+                    </div>
+
+                    <button type="submit" class="submit-btn hover-lift group relative w-full h-11 bg-gray-900 text-white rounded-xl font-semibold shadow-lg shadow-brand-500/20 overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-shine"></div>
+                        <span class="btn-text relative z-10 text-sm transition-opacity duration-300">Sign In</span>
+                        
+                        <div class="loading-spinner absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none">
+                            <svg class="animate-spin w-5 h-5 text-white" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
+                            </svg>
+                        </div>
+                    </button>
+
+                    <div class="relative flex py-1 items-center opacity-80">
+                        <div class="flex-grow border-t border-gray-400/30"></div>
+                        <span class="flex-shrink-0 mx-3 text-[10px] text-gray-500 font-medium uppercase tracking-wider">Or</span>
+                        <div class="flex-grow border-t border-gray-400/30"></div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2">
+                        <button type="button" class="hover-lift flex items-center justify-center h-10 bg-white/70 border border-gray-200 rounded-xl hover:bg-white hover:border-gray-300 shadow-sm group">
+                            <i class="bi bi-google text-red-500 text-sm group-hover:scale-110 transition-transform"></i>
+                            <span class="ml-2 text-xs font-semibold text-gray-600">Google</span>
+                        </button>
+                        <button type="button" class="hover-lift flex items-center justify-center h-10 bg-gray-900 text-white rounded-xl hover:bg-gray-800 shadow-sm group">
+                            <i class="bi bi-github text-sm group-hover:scale-110 transition-transform"></i>
+                            <span class="ml-2 text-xs font-semibold">GitHub</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4 text-xs text-gray-600">
+                    New here? <button onclick="switchTab('register')" class="text-brand-600 font-bold hover:underline hover:text-brand-700 transition-colors">Create Account</button>
+                </div>
+            </div>
+
+            <div class="w-1/2 p-6 pt-10 flex flex-col justify-center relative">
+                <div class="text-center mb-4">
+                    <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Join Us.</h1>
+                    <p class="text-xs text-gray-600 mt-0.5">Start your journey today.</p>
+                </div>
+
+                <form id="registerForm" novalidate class="space-y-3">
+                    <div class="relative group">
+                        <input type="text" id="regName" placeholder=" " required 
+                            class="input-animate peer w-full h-12 bg-white/40 border border-gray-300/80 rounded-xl px-3 pl-10 outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-sm text-gray-700">
+                        <label class="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 text-xs transition-all pointer-events-none rounded cursor-text origin-left">Full Name</label>
+                        <i class="bi bi-person absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 peer-focus:text-brand-500 transition-colors text-sm"></i>
+                        <i class="bi bi-check-circle-fill absolute right-3.5 top-1/2 -translate-y-1/2 text-green-500 opacity-0 transition-opacity validation-icon text-xs"></i>
+                    </div>
+
+                    <div class="relative group">
+                        <input type="email" id="regEmail" placeholder=" " required 
+                            class="input-animate peer w-full h-12 bg-white/40 border border-gray-300/80 rounded-xl px-3 pl-10 outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-sm text-gray-700">
+                        <label class="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 text-xs transition-all pointer-events-none rounded cursor-text origin-left">Email</label>
+                        <i class="bi bi-envelope absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 peer-focus:text-brand-500 transition-colors text-sm"></i>
+                        <i class="bi bi-check-circle-fill absolute right-3.5 top-1/2 -translate-y-1/2 text-green-500 opacity-0 transition-opacity validation-icon text-xs"></i>
+                    </div>
+
+                    <div class="relative group">
+                        <input type="password" id="regPass" placeholder=" " required 
+                            class="input-animate peer w-full h-12 bg-white/40 border border-gray-300/80 rounded-xl px-3 pl-10 pr-16 outline-none focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10 text-sm text-gray-700">
+                        <label class="absolute left-10 top-1/2 -translate-y-1/2 text-gray-500 text-xs transition-all pointer-events-none rounded cursor-text origin-left">Password</label>
+                        <i class="bi bi-lock absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-500 peer-focus:text-brand-500 transition-colors text-sm"></i>
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-2">
+                            <i class="bi bi-check-circle-fill text-green-500 opacity-0 transition-opacity validation-icon text-xs"></i>
+                            <i class="bi bi-eye-slash text-gray-500 cursor-pointer hover:text-brand-600 hover:scale-110 transition-all z-20" onclick="togglePassword('regPass', this)"></i>
+                        </div>
+                    </div>
+
+                    <div class="h-0.5 w-full bg-gray-300/50 rounded-full overflow-hidden mt-1">
+                        <div id="strengthBar" class="h-full w-0 transition-all duration-500 ease-out bg-red-400"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn hover-lift group relative w-full h-11 bg-brand-600 text-white rounded-xl font-semibold shadow-lg shadow-brand-500/30 overflow-hidden mt-2">
+                        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shine"></div>
+                        <span class="btn-text relative z-10 text-sm transition-opacity duration-300">Sign Up</span>
+                        
+                        <div class="loading-spinner absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 pointer-events-none">
+                            <svg class="animate-spin w-5 h-5 text-white" viewBox="0 0 50 50">
+                                <circle cx="25" cy="25" r="20" fill="none" stroke="currentColor" stroke-width="4"></circle>
+                            </svg>
+                        </div>
+                    </button>
+
+                    <div class="relative flex py-1 items-center opacity-80">
+                        <div class="flex-grow border-t border-gray-400/30"></div>
+                        <span class="flex-shrink-0 mx-3 text-[10px] text-gray-500 font-medium uppercase tracking-wider">Or</span>
+                        <div class="flex-grow border-t border-gray-400/30"></div>
+                    </div>
+
+                     <div class="grid grid-cols-2 gap-2">
+                        <button type="button" class="hover-lift flex items-center justify-center h-10 bg-white/70 border border-gray-200 rounded-xl hover:bg-white hover:border-gray-300 shadow-sm group">
+                            <i class="bi bi-google text-red-500 text-sm group-hover:scale-110 transition-transform"></i>
+                            <span class="ml-2 text-xs font-semibold text-gray-600">Google</span>
+                        </button>
+                        <button type="button" class="hover-lift flex items-center justify-center h-10 bg-gray-900 text-white rounded-xl hover:bg-gray-800 shadow-sm group">
+                            <i class="bi bi-github text-sm group-hover:scale-110 transition-transform"></i>
+                            <span class="ml-2 text-xs font-semibold">GitHub</span>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4 text-xs text-gray-600">
+                    Already have an account? <button onclick="switchTab('login')" class="text-brand-600 font-bold hover:underline hover:text-brand-700 transition-colors">Log In</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
